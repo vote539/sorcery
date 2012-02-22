@@ -33,7 +33,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency(%q<json>, [">= 1.5.1"])
   s.add_development_dependency(%q<rspec>, ["~> 2.5.0"])
   s.add_development_dependency(%q<rspec-rails>, ["~> 2.5.0"])
-  s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
+  if PLATFORM.to_i > 1.9
+    s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
+  else
+    s.add_development_dependency(%q<ruby-debug>, [">= 0"])
+  end
   s.add_development_dependency(%q<sqlite3-ruby>, [">= 0"])
   s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
   s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
@@ -42,5 +46,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency(%q<capybara>, [">= 1.1.2"])
   s.add_development_dependency(%q<mongoid>, ["~> 2.4.4"])
   s.add_development_dependency(%q<timecop>, [">= 0"])
+  s.add_development_dependency(%q<awesome_print>, [">= 0"])
 end
 

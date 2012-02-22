@@ -59,7 +59,7 @@ desc "Bundle all folders"
 task :bundle do
   sh "bundle"
   Dir['spec', 'spec/**'].each do |dir|
-    if Dir.exists?(dir) && File.exists?(dir + "/Gemfile")
+    if File.exists?(dir) && File.directory?(dir) && File.exists?(dir + "/Gemfile")
       sh <<-CMD
         cd #{dir}
         bundle
@@ -72,7 +72,7 @@ desc "Bundle update all folders"
 task :bundle_update do
   sh "bundle update"
   Dir['spec', 'spec/**'].each do |dir|
-    if Dir.exists?(dir) && File.exists?(dir + "/Gemfile")
+    if File.exists?(dir) && File.directory?(dir) && File.exists?(dir + "/Gemfile")
       sh <<-CMD
         cd #{dir}
         bundle update
